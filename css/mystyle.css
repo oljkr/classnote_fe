@@ -1,0 +1,36 @@
+@charset "UTF-8";
+/*문자 인코딩 UTF-8*/
+/*이 문구는 반드시 첫줄에 와야 한다*/
+
+/* 확장명 자체가 css이기 떄문에 아래처럼 internal 태그를 쓰면 오류가 난다.
+<style>/<style>
+*/
+
+/*selector 참고 https://www.w3schools.com/cssref/css_selectors.asp */
+/*mystyle.css*/
+
+/* *는 모든 요소들에 적용하라는 것임 */
+* {
+    font-family: 궁서체;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+/*모바일같은 경우 기본 여백때문에 공간이 작아질 수 있으므로
+ 보통 마진이나 패딩은 없애고 시작한다.*/
+ /* 여백은 안쪽이 패딩 바깥쪽이 마진 */
+
+ body{
+    background-color: rgb(241, 208, 164);
+    margin: 0;/*그냥 0으로 적은건 바깥쪽 여백. 위쪽 오른쪽 아래쪽 왼쪽 모두 여백을 0으로 하란 것임*/
+    padding: 0;
+ }
+
+ .line{border: 1px dotted gray;}
+
+ #mylayer{
+    width: 200px;
+    height: 200px;
+    background-color: aqua;
+ }

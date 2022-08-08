@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05_document.html</title>
+    <style>
+        #demo{
+            position: absolute;
+            top: 200px;
+            left: 300px;
+            background-color: rgb(46, 45, 109);
+            width: 150px;
+            height: 150px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        table{
+            position: absolute;
+            top: 15px;
+            left: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="demo"></div>
+    <script>
+        // 🤍객체 Object
+        // -> 객체명.멤버함수()
+        // -> 객체명.멤버변수
+        
+        // 🤍document 객체
+        // -> HTML페이지의 본문 <body> 가리키는 객체
+            document.write(); //body라는 공간에 출력을 해주라.
+            document.write(123); //숫자
+            document.write("대한민국"); //문자
+            document.write("<hr>"); //html명령어
+
+            //+는 숫자를 더하는 의미도 있지만
+            //뒤에 붙여서 뭔가를 하라는 의미도 있음.
+            document.write(3+5);    //8
+            document.write("<br>");
+            document.write(3+"5"); //35
+            document.write("<br>");
+            document.write("3"+5);  //35
+            document.write("<br>");
+            document.write("3"+"5"); //35
+            document.write("<br>");
+            document.write("3+5"); //3+5
+
+            document.write("<hr>");
+            
+            let name="손흥민";
+            let age=25;
+            let height=178.9;
+
+            document.write("이름: "+name+"<br>");
+            document.write("나이: "+age+"<br>");
+            document.write("키: "+height+"<br>");
+            document.write("<hr>");
+
+            //자바스크립트에서 HTML tag사용시 문자열 처리해서 사용한다
+            document.write("<hr>");
+            document.write("개나리<br><p>진달래</p>");
+            document.write("<img src='../../images/monkey.png'>");
+            document.write("<br>");
+            document.write("<img src='https://avatars.githubusercontent.com/u/77258089?v=4' width=200px>");
+            //////////////////////////////////////////////////////////////////
+
+            document.write("<hr>");
+            //""사이에 공백을 주는 것도 문자이다.(공백문자, 문자의 갯수는 1개임.)
+            let str0=" "; //문자갯수 1개
+            let str=""; //빈문자열(글자갯수가 0개)
+            str=str+"ONE";
+            document.write(str);
+            document.write("<hr>");
+
+            str=str+"TWO";
+            document.write(str);
+            document.write("<hr>");
+
+            str=str+"THREE";
+            document.write(str);
+
+            //////////////////////////////////////////////////////////////////
+
+            document.write("<hr>");
+            //본문<body>에 있는 id 속성 접근
+            //1)순수 JavaScript 접근
+                //document.getElementById("demo")
+                document.getElementById("demo").innerHTML="아이티윌" //" "사이에 내가 원하는 글자 대입
+            
+            //2)jQuery 접근 (jQuery라이브러리)
+            //$("#demo").vla("아이티윌")
+
+            //연습) 이름, 나이, 키 값들을 표작성을 해서 id=demo에 출력하시오
+            name="김연아";
+            age=30;
+            height=165.7;
+            
+            let result=""; //결과값
+            //result변수에 표작성을 해서 변수들을 넣고
+            //id = demo에 result를 뿌리면 됨!
+            
+            result+= "<table border='1'>";
+            result+= "<tr>";
+            result+= "  <th>이름</th>";
+            result+="   <td>" + name + "</td>";
+            result+="</tr>";
+            result+= "<tr>";
+            result+= "  <th>나이</th>";
+            result+="   <td>" + age + "</td>";
+            result+="</tr>";
+            result+= "<tr>";
+            result+= "  <th>키</th>";
+            result+="   <td>" + height + "</td>";
+            result+="</tr>";
+            result+="</table>";
+
+            //document.getElementById("demo").innerText=result; 결과값을 문자열로 출력
+            document.getElementById("demo").innerHTML=result; //결과값을 HTML tag형식으로 출력
+
+
+    </script>
+    
+</body>
+</html>

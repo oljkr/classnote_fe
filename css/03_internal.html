@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>03_internal.html</title>
+    <style>
+        /*
+        ● [선택자 Selector]
+            - 스타일을 적용하기 위한 대상을 뜻하며,
+              HTML 요소를 사용할 수도 있고 ID나 class 형태로 정의할 수도 있다.             
+            - 선택자 {속성1:값1; 속성2:값2; 속성3:값3; ~~}            
+            - 하나의 속성을 주석 --
+
+        ● [선택자의 유형]
+            1) 태그        : HTML요소명을 선택자로 사용가능. div, h1, input, body등등
+            2) #선택자 이름: 본문에 적용할 때 id="선택자이름", 본문에 선택자이름을 한번만 적용할 수 있다
+            3) .선택자이름 : 본문에 적용할 때 class="선택자이름", 본문에 선택자이름을 여러번 적용할 수 있다
+        */
+            h1 {background-color: grey; color: #FFFFFF;}
+            h2 {background-color: pink;}
+            /*border style 참조 : https://www.w3schools.com/css/css_border.asp -->
+            /*--이렇게 속성을 한꺼번에 줄 수도 있음!*/
+            input {border: 1px solid blue; } /*선굵기 직선 색상*/
+
+            /* id를 사용하는 방법 */
+            #mydiv{background-color: plum; color:blue}
+            /*아래처럼 class로 만든 것은 내가 원하는 여러 곳곳에 같이 쓸 수 있다
+            단점 : 내가 만든 CSS를 다른 페이지에서는 쓸 수 없다. 다른 페이지에서 쓰려면 복사를 해 와서 써야한다.
+            이를 보완하기 위해 css파일을 따로 만듦.*/
+            .intro{background-color: green; font-weight: bold;}
+            .next{background-color: cornflowerblue;}
+
+    </style>
+  </head>
+  <body>
+        <h3>2)Internal CSS</h3>
+        <!-- <style> </style> 태그 -->
+        <!-- <style> </style> 태그는 HTML 문서에 여러번 올 수 있다(그러니까 중첩 말고 form처럼
+            병렬로 많이 쓸 수 있다는 뜻!) -->
+        <!-- html은 이종문서임(여러개의 종류가 모두 들어올 수 있음). 그래서 html,css,js가 모두
+             올 수 있는데 각각의 영역을 잘 지켜줘야함. style태그 안에 js가 들어있으면 안 됨.-->
+        <!--1차적으로 </head> 안쪽에 <style>요소를 추가한다 .그리고 <body>영역에서 이걸
+            가져다 쓴다.-->
+        <!--이 파일의 5번라인부터는 CSS의 style문법이기 때문에 html의 <br>같은 태그를 쓰면 안 된다.
+        여기서는 CSS의 문법만 사용해야 함.-->
+
+
+        <!-- 참조 https://www.w3schools.com/css/css_selectors.asp -->
+
+        <h1>서울특별시</h1>
+            <h2>종로구</h2>
+            <h2>강남구</h2>
+        
+        <h1>경기도</h1>
+            <h2>수원시</h2>
+            <h2>성남시</h2>
+        
+        <hr>
+        <input type="text">
+        <input type="password">
+
+        <hr>
+        <!-- id속성값은 식별자이기 때문에 중복해서 사용하는 것은 비추천!! -->
+        <!-- id속성값이 중복되면 배열의 인덱스(순서)로 접근해야 한다 -->
+        <!-- id이름을 똑같이 주면 순서대로 구분이됨(0부터 카운터됨)
+            틀린 건 아닌데 추천사항은 아님-->
+        <div id="mydiv">무궁화 꽃이 피었습니다</div>
+        <div id="mydiv2">오징어 게임</div>
+
+        
+        <hr>
+        <p class="intro">대한민국</p>
+        <p class="next">오필승 코리아</p>
+        <span class="intro">제주도</span>
+        <div class="intro">강남구 역삼동</div>
+    
+  </body>
+</html>

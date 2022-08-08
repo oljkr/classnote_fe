@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02_지폐갯수.html</title>
+    <style>
+        #demo {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(51, 131, 51);
+            color: wheat;
+        }
+        table {
+          height: 200px;
+          width: 200px;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="demo">
+    </div>
+    <script>
+        //연습) 각 지폐갯수를 구해서 표작성해서 본문 id=demo에 출력하시오
+        /*
+
+        */
+        let money=54320;
+        let restMoney=0;
+
+        let man=parseInt(money/10000);
+        restMoney=money%10000;
+
+        let chen=parseInt(restMoney/1000);
+        restMoney=restMoney%1000;
+
+        let beak=parseInt(restMoney/100);
+        restMoney=restMoney%100;
+
+        let sip=parseInt(restMoney/10);
+
+        let result=""; //결과값
+        //result변수에 표작성을 해서 변수들을 넣고
+        //id = demo에 result를 뿌리면 됨!
+        
+        result+= "<table border='1';>";
+        result+= "<tr >";
+        result+= "  <th>만원</th>";
+        result+="   <td>" + man + "장</td>";
+        result+="</tr>";
+
+        result+= "<tr>";
+        result+= "  <th>천원</th>";
+        result+="   <td>" + chen + "장</td>";
+        result+="</tr>";
+
+        result+= "<tr>";
+        result+= "  <th>백원</th>";
+        result+="   <td>" + beak + "장</td>";
+        result+="</tr>";
+
+        result+= "<tr>";
+        result+= "  <th>십원</th>";
+        result+="   <td>" + sip + "장</td>";
+        result+="</tr>";
+
+        result+="</table>";
+
+        document.getElementById("demo").innerHTML=result; //결과값을 HTML tag형식으로 출력
+    </script>
+  </body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01_성적표.html</title>
+    <style>
+        #demo {
+            height: 400px;
+            width: 250px;
+            background-color: rgb(235, 183, 213);
+            color: black;
+        }
+        table {
+          height: 400px;
+          width: 250px;
+        }
+    </style>
+  </head>
+  <body>
+
+    <h3>성적표</h3>
+    <div id="demo"></div>
+
+    <script>
+        let name="손흥민";
+        let kor=100, eng=100, mat=95;
+
+        let total=kor+eng+mat;  //총점구하기
+        let aver =total/3;  //평균구하기
+
+        /*
+            🍥 출력결과 (표작성해서 본문 id=demo에 출력)
+            -----------------------------
+            이름    홍길동
+            -----------------------------
+            국어    100
+            -----------------------------
+            영어    100
+            -----------------------------
+            수학    95
+            -----------------------------
+            총점    235
+            -----------------------------
+            평균    98
+            -----------------------------
+                    A학점                    문1) 평균 90이상 A, 80이상 B, 70이상 C, 60이상 D, 나머지는 F ~~
+            결과    합격                           (걍 한줄에 몰아서 출력하기)
+                    ★★★★★★★★★        문2) //과락
+                    장학생                        //평균이 70점이상이면 결과:합격
+            ----------------------------         //  (단, 국영수 세과목중에서 한과목이라도 40점미만이면 결과: 재시험)
+                                                 //  평균이 70점 미만이면 결과: 불합격
+                                             문3)평균 10점당 * 한개씩
+                                             문4) 평균 95이상 장학생
+        */
+        
+        //내가 짠 코드
+        //문1)
+        let score='F';
+        if(aver>=90){
+            score='A';
+        }else if(aver>=80){
+            score='B';
+        }else if(aver>=70){
+            score='C';
+        }else if(aver>=60){
+            score='D';
+        }
+        //문2)
+        let mun2;
+        if(aver>=70){
+            if(kor<40||eng<40||mat<40){
+                mun2="재시험";
+            }
+            mun2="합격";
+        }else mun2="불합격";
+        //문3)평균 10점당 * 한개씩
+        let mun3="";
+        for(let x=0;x<Math.floor(aver/10);x++){
+            mun3+="★";
+        }
+        //문4) 평균 95이상 장학생
+        let mun4;
+        if(aver>=95) mun4="장학생";
+
+
+        let result=""; //결과값
+        //result변수에 표작성을 해서 변수들을 넣고
+        //id = demo에 result를 뿌리면 됨!
+        
+        result+= "<table border='1';>";
+        result+= "<tr >";
+        result+= "  <th>이름</th>";
+        result+="   <td>" + name;
+        result+="</tr>";
+
+        result+= "<tr>";
+        result+= "  <th>국어</th>";
+        result+="   <td>" + kor ;
+        result+="</tr>";
+
+        result+= "<tr>";
+        result+= "  <th>영어</th>";
+        result+="   <td>" + eng ;
+        result+="</tr>";
+
+        result+= "<tr>";
+        result+= "  <th>수학</th>";
+        result+="   <td>" + mat;
+        result+="</tr>";
+
+        result+= "<tr>";
+        result+= "  <th>총점</th>";
+        result+="   <td>" + total;
+        result+="</tr>";
+
+        result+= "<tr>";
+        result+= "  <th>평균</th>";
+        result+="   <td>" + Math.round(aver);
+        result+="</tr>";
+
+        // result+= "<tr>";
+        // result+= "  <th>결과</th>";
+        // result+="   <td>" + score +"<br>"+mun2+"<br>"+mun3+"<br>"+mun4+"</td>";
+        // result+="</tr>";
+        // 결과 칸은 아래쪽 선생님이 짠 코드로도 할 수 있는 거 알아두기
+        
+        //선생님이 짠 코드
+        //문1)학점 구하기
+        let grade="";
+        switch(parseInt(aver/10)){
+            case 10:
+            case 9: grade="A학점"; break;
+            case 8: grade="B학점"; break;
+            case 7: grade="C학점"; break;
+            case 6: grade="D학점"; break;
+            default: grade="F학점"; break;
+        }
+
+        //문2) 과락
+        let pass="";
+        if(aver>=70){
+            if(kor<40||eng<40||mat<40){
+                pass="재시험";
+            }else{
+                pass="합격";
+            }
+        }else{
+            pass="탈락";
+        }
+
+        //문3) 평균 10점당 * 한개씩
+        let star="";
+        for(let n=0; n<parseInt(aver/10); n++){
+            star=star+"*";
+        }
+
+        //문4) 장학생
+        let special = "&nbsp";
+        if(aver>=95) {
+            special = "<span style='color:red; font-weight:bold'>장학생</span>";
+        }
+
+        result+= "<tr>";
+        result+= "  <th rowspan='4'>결과</th>";
+        result+="   <td>" + grade+"</td>";
+        result+="</tr>";
+
+        result+= "<tr>";
+        result+="   <td>" + pass+"</td>";
+        result+="</tr>";
+
+        result+= "<tr>";
+        result+="   <td>" + star+"</td>";
+        result+="</tr>";
+
+        result+= "<tr>";
+        result+="   <td>" + special +"</td>";
+        result+="</tr>";
+
+        document.getElementById("demo").innerHTML=result; //결과값을 HTML tag형식으로 출력
+
+    </script>
+  </body>
+</html>

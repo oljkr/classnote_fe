@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>for 반복문</title>
+  </head>
+  <body>
+    <h3>for 반복문</h3>
+    <script>
+        /*
+            🍕반복문
+            - for문, while문, do-while문
+            - break문
+            - continue문
+            - 무한 LOOP : 끝이 없는 반복
+
+            🍕for반복문 형식
+            -for(시작값; 종료값; 증감){ 반복하고자하는 명령어들 }
+            -for( in ) {}
+            -for( : ){}
+            -for(;;){} 무한 LOOP
+        */
+
+        //증가에 따른 반복
+        for(let a=1; a<=4; a++){
+            document.write(a+"HTML ");
+        }
+        document.write("<hr>");
+        //감소에 따른 반복
+        for(let b=3; b>=1; b--){
+            document.write(b+"CSS ");
+        }
+        document.write("<hr>");
+
+        //구구단
+        for(let x=1;x<=9;x++){
+            for(let y=1;y<=9;y++){
+                document.write(x+"*"+y+"="+x*y+"<br>");
+            }
+            document.write("<hr>");
+        }
+    </script>
+  </body>
+</html>

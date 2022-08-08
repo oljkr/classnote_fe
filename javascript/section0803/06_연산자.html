@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06_연산자.html</title>
+</head>
+<body>
+    <h3>연산자</h3>
+
+    <script>
+        /*
+            💖[연산자 Operator]
+            -이식성이 풍부하다
+            -산술, 비교, 논리연산자
+        */
+
+        //1. 산술연산자
+        document.write(5+3);
+        document.write("<br>");
+        document.write(5-3);
+        document.write("<br>");
+        document.write(5*3);
+        document.write("<br>");
+        document.write(5/3+" 몫"); //몫 1.66666
+        document.write("<br>");
+        document.write(5%3+" 나머지"); //나머지 2
+        document.write("<hr>");
+
+        document.write(3/5+" 몫"); //몫 1.66666
+        document.write("<br>");
+        document.write(3%5+" 나머지"); //나머지 2
+        document.write("<hr>");
+        /////////////////////////////////
+
+        //2. 비교(관계) 연산자
+        //-> 논리형(boolean)으로 반환된다
+        //-> true, false
+        document.write(5>3);
+        document.write(5<3);
+        document.write("<hr>");
+
+        document.write(5>=3);
+        document.write(5<=3);
+        document.write("<hr>");
+
+        document.write(5==3); //서로 같다
+        document.write(5!=3); //서로 같지 않다
+        document.write("<hr>");
+        //////////////////////////////////////////
+
+        //3.논리연산자
+        //->조건이 2개이상일 경우 전체적으로 판단
+        //->결과값은 boolean값으로 반환
+        //->그리고, 또는, 부정
+
+        // 1) && 연산자
+        // -> 그리고, and 연산자, 논리곱
+        // -> 모든 조건이 true일때만 true
+        // -> ~이면서
+        document.write(5<3 && 2<4);
+                //     false  true
+                //  => false로 판단
+
+        // 2) || 연산자
+        // -> 또는, or연산자, 논리합
+        // -> 조건들중에서 하나만이라도 true이면 true
+        // -> ~이거나
+        document.write(5<3 || 2<4);
+                //     false  true
+                //     =>true로 판단
+        // 3) ! 연산자
+        // -> 논리 부정 연산자, not 연산자
+        // -> ~아니라면
+        let flag=true;
+        document.write(!flag);
+
+
+
+    </script>
+</body>
+</html>

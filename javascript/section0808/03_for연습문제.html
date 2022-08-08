@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03_for연습문제.html</title>
+  </head>
+  <body>
+    <script>
+
+    //문1) 아래와 같이 출력하시오
+    /*
+       12345
+       23456
+       34567
+       45678
+       56789
+    */
+
+    for(let y=1;y<6;y++){
+        for(let x=y;x<y+5;x++){
+            document.write(x);
+        }
+        document.write("<br>");
+    }
+    document.write("<hr>");
+
+    //선생님풀이
+    for(let a=0; a<5; a++){
+        for(b=a+1; b<=a+5; b++){
+            document.write(b);
+        }
+        document.write("<br>");
+    }
+    document.write("<hr>");
+
+    //문2)아래 그림과 같이 출력하시오
+    /*
+	@★★★
+	★@★★
+	★★@★
+	★★★@            
+    */
+
+    for(let y=0;y<4;y++){
+        for(let x=0;x<4;x++){
+            if(y==x){
+                document.write("@");
+                continue;
+            }
+            document.write("★");
+        }
+        document.write("<br>");
+    }
+    document.write("<hr>");
+
+    //선생님 풀이
+    for(let a=1; a<=4; a++){
+        for(let b=1; b<=4; b++){
+            if(a==b){
+                document.write("🌞");
+            }else{
+                document.write("⭐");
+            }        
+        }
+        document.write("<br>");
+    }
+    document.write("<hr>");
+
+    //문3) 아래와 같이 누적의 합을 출력하시오 (회전수 증가)
+    /*
+       1+ ... +10=55
+       1+ ... +20=210
+       1+ ... +30=465
+       
+       1+ ... +90=
+       1+ ... +100=5050            
+    */
+
+    let sum=0;
+    for(let y=10;y<=100;y+=10){
+        sum=0;
+        for(let x=1;x<=y;x++){
+            sum+=x;
+        }
+        document.write("1+ ... +"+y+"="+sum+"<br>");
+    }
+    document.write("<hr>");
+
+    //선생님코드
+    let sum0=0; //누적의 합
+    for(let a=10; a<=100; a+=10){
+        for(let b=1; b<=a; b++){
+            sum0=sum0+b;
+        }
+        document.write("1+..." + a + "="+sum0);
+        document.write("<br>");
+        sum0=0; //초기화
+    }
+    document.write("<hr>");
+    //문4) 1~100사이 중에서 짝수의 합, 홀수의 합을 각각 구하시오
+    let hapEven=0;
+    let hapOdd=0;
+    for(let y=1;y<=100;y++){
+        if(y%2==0){
+            hapEven+=y;
+        }
+        else hapOdd+=y;
+    }
+    document.write("짝수의 합"+hapEven+"<br>");
+    document.write("홀수의 합"+hapOdd+"<br>");
+    document.write("<hr>");
+
+    //선생님 풀이
+    let even=0;
+    let odd=0;
+    //1) for(let a=1; a<=100; a++){
+    //     if(a%2==0){
+    //         even+=a;
+    //     }else{
+    //         odd+=a;
+    //     }
+    // }
+    let flag=false;
+    for(let a=1; a<=100; a++){
+        if(flag){
+            even=even+a;
+            flag=false;
+        }else{
+            odd=odd+a;
+            flag=true;
+        }
+    }
+    document.write("짝수의 합"+even+"<br>");
+    document.write("홀수의 합"+odd+"<br>");
+    document.write("<hr>");
+
+    //문5) 다음식의 결과를 구하시오   
+    //    1 - 2 + 3 - 4 + 5 ... -100 = ?
+
+    let result5=0;
+    for(let a=1;a<=100;a++){
+        if(a%2==1){
+            result5+=a;
+        }else result5-=a;
+    }
+    document.write(result5+"<hr>");
+
+    //선생님 풀이
+    let hap5=0;
+    flag=false;
+    for(let a=1; a<=100; a++){
+        if(flag){
+            hap5=hap5-a;
+            flag=false;
+        }else{
+            hap5=hap5+a;
+            flag=true;
+        }
+    }
+    document.write("1 -2 + 3 -4 + 5 ... -100="+hap5);
+    document.write("<hr>");
+
+    //문6) 2g, 3g, 5g짜리 추가 각각 5개씩 있을때,
+    //세가지의 추의 조합으로 무게가 40~45사이일 때
+    //     각 추의 갯수와 무게를 출력하는 프로그램
+    /*
+           출력결과
+           2g  3g  5g   total
+           1   5   5    42
+           2   4   5    41
+           2   5   5    44
+    */
+
+    //내가 짠 코드
+    document.write("2g 3g 5g total<br>");
+    let hap6=0;
+    for(let a=1; a<=5; a++){
+        hap6+=(a*2);
+        for(let b=1; b<=5; b++){
+            hap6+=(b*3);
+            for(let c=1; c<=5; c++){
+                hap6+=(c*5)
+                if(40<=hap6&&hap6<=45){
+                    document.write(a+"&nbsp&nbsp&nbsp"+b+"&nbsp&nbsp&nbsp"+c+"&nbsp&nbsp&nbsp"+hap6+"<br>");
+                }
+                hap6-=(c*5);
+            }
+            hap6-=(b*3);
+        }
+        hap6-=(a*2);
+    }
+    document.write("<hr>");
+
+    //주영이 풀이
+    document.write("2g 3g 5g total<br>");
+    let p=1,q=1,r=1;
+    let hap6_re=p*2+q*3+r*5;
+    for(p=1; p<=5; p++){
+        for(q=1;q<=5;q++){
+            for(r=1;r<=5;r++){
+                hap6_re=p*2+q*3+r*5;
+                if(40<=hap6_re&&hap6_re<=45){
+                    document.write(p+"&nbsp&nbsp&nbsp"+q+"&nbsp&nbsp&nbsp"+r+"&nbsp&nbsp&nbsp"+hap6_re+"<br>");
+                }
+            }
+        }
+    }
+    
+    document.write("<hr>");
+    //선생님 풀이
+    document.write("2g 3g 5g total<br>");
+    let total=0;
+    for(let a=1; a<=5; a=a+1){
+        for(let b=1; b<=5; b++){
+            for(let c=1; c<=5; c++){
+                total=(a*2) + (b*3) + (c*5);
+                if(total>=40 && total <=45){
+                    document.write(a+"&nbsp&nbsp&nbsp"+b+"&nbsp&nbsp&nbsp"+c+"&nbsp&nbsp&nbsp"+total+"<br>");
+                }
+            }
+        }
+    } 
+    
+    </script>
+  </body>
+</html>

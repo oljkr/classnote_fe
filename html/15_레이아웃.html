@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15_레이아웃.html</title>
+</head>
+<body>
+    <!-- 참조 https://www.w3schools.com/css/css_rwd_intro.asp -->
+    <!-- 참조 https://www.w3schools.com/html/html_layout.asp -->
+    <!-- 참조 NCS학습모듈(화면구현) https://ncs.go.kr/ -->
+
+    <!--밑에 코드를 실행하면 블록안에 블록이 들어가 있진 않음
+        이런건 CSS로 조정해야 함 -->
+    <div id="wrap" style="background-color: red;">#wrap전체블럭
+        <div id="header" style="background-color: pink;">#header</div>
+        <div id="main" style="background-color: orange;">#main
+            <div id="sub" style="background-color: green;">#sub</div>
+            <div id="content" style="background-color: purple;">#content</div>        
+        </div><!--id=main 끝(div헷갈리지 않게 이렇게 주석달면 좋음!)-->
+        <div id="footer" style="background-color: blue;">#footer</div>
+    </div><!-- id=wrap 끝-->
+    <!--위처럼 header,main,footer를 div아이디로 자주쓰니까 이게 그냥 태그화 됨(시멘틱 요소)
+        어떤 기능이 있는 건 아니지만 레이아웃을 잡기위해 사용함.-->
+    <hr>
+
+    <!-- 연습) 동행복권 웹페이지 레이아웃 -->
+    <!-- 참조 https://dhlottery.co.kr/ -->
+    <div id="wrap">
+        <div id="header">
+            <div>
+                <span>동행복권</span>
+                    <input type="button" value="로그인">
+                    <input type="button" value="회원가입">
+                    <input type="button" value="마이페이지">
+                    <input type="button" value="고객센터">
+            </div>
+            <div>
+                <!-- 화면상에 노출은 안 되지만 대분류중분류같은 문서의 구조를 파악하기 위해
+                    문구를 넣어야 할 때 display: none;을 사용하면 된다.-->
+                <!--매번 display: none을 쓰기 귀찮으니까 CSS에서 reset이란걸 사용함-->
+                <h1 style="display: none;">대분류</h1>
+                <ul style="list-style: none;">
+                    <li>복권구매</li>
+                    <li>복권정보</li>
+                    <li>당첨결과</li>
+                    <li>판매점</li>
+                    <li>이벤트</li>
+                    <li>행복공감</li>
+                </ul>
+            </div>
+        </div><!-- header end-->
+        <div id="main">
+            <div id="sub">
+                <h2 style="display: none;">대분류</h2>
+                <span>판매점</span><br>
+                <ul style="list-style: none;">
+                    <li>구입처 안내</li>
+                    <li>당첨 판매점</li>
+                </ul>
+            </div><!-- sub end-->
+            <div id="content">
+                <h3 style="display: none">소분류</h3>
+                <span>로또6/45판매점 조회</span><br>
+                <table border="1">
+                    <tr>
+                        <td>
+                            지역으로 검색<br>
+                            <select id="regionsi" name="regionsi">
+                                <option value="경기">경기</option>
+                                <option value="인천">인천</option>
+                                <option value="강원">강원</option>
+                                <option value="충북">충북</option>
+                                <option value="서울" selected>서울</option>
+                            </select>
+                            <select id="regiongu" name="regiongu">
+                                <option value="강남구" selected>강남구</option>
+                                <option value="강동구">강동구</option>
+                                <option value="강북구">강북구</option>
+                                <option value="강서구">강서구</option>
+                            </select>
+                            <input type="button" value="조회">
+                        </td>
+                        <td>
+                            상호/지역(읍/면/동)으로 검색<br>
+                            <select id="case" name="case">
+                                <option value="상호">상호</option>
+                                <option value="지역(읍/면/동)">지역(읍/면/동)</option>
+                            </select>
+                            <input type="text" name="search">
+                            <input type="button" value="조회">
+                        </td>
+                    </tr>
+                </table>
+                <hr>
+                <table border="1">
+                    <tr>
+                        <th>상호명</th>
+                        <th>전화번호</th>
+                        <th>소재지</th>
+                        <th>위치보기</th>
+                    </tr>
+                    <tr>
+                        <td>도곡행운로또방</td>
+                        <td>070-4211-6109</td>
+                        <td>서울 강남구 도곡로4길 11 102호</td>
+                        <td>
+                            <a href=""><img src="../image/search.png"></a>
+                        </td>
+                    </tr>
+                </table>
+
+            </div><!--content end-->
+        </div><!-- main end-->
+        <div id="footer">
+            <h1 style="display: none;">꼬리말</h1>
+            <ol style="list-style-type: none;">
+                <li>이용약관</li>
+                <li>개인정보 처리방침</li>
+                <li>인쇄복권당청금지급기준</li>
+            </ol>
+            주소 : 06719 서울 서초구 남부순환로 2423 한원빌딩 4층 고객문의 1588-6450 FAX 02-6933-306
+        </div><!-- footer end-->
+    </div><!--wrap end-->
+
+
+</body>
+</html>

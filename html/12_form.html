@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12_form.html</title>
+</head>
+<body>
+    <!-- form 입력양식 -->
+    <!-- 사용자들이 값을 입력할 수 있도록 해줌 -->
+    <!-- 참조 https://www.w3schools.com/html/html_form_input_types.asp -->
+    <!-- 요소, element             : <table> <img> <a> <audio> 같은 것들을 요소라고 함.-->
+    <!-- 속성, property, attribute : width, height, border, src 등등..이런 것들을 속성이라고 함-->
+
+    <!-- 다양한 폼 컨드롤 요소 -->
+
+    <!-- 1. <input> 요소 -->
+    <input type="button">
+    <input type="button" value="로그인">
+    <input type="button" value="검색">
+    <input type="button" value="등록">
+    <input type="button" value="입실">
+    <hr>
+    
+    <!-- 생긴건 위 버튼과 같지만 타입에 따라 전송기능과 원래대로 돌아가는 기능이 적용됨. 버튼은 아무런 기능 없음-->
+    <!-- 사용자가 입력한 양식을 서버로 전송-->
+    <input type="submit" value="전송">
+    <!-- 원래봤던 폼 양식으로 보여줌. 사용자가 입력한 요소를 취소하고 원래대로 복귀.-->
+    <input type="reset" value="취소">
+    <hr>
+
+    <!-- 이건 위에 버튼과 같은 생김새인데 기능이 조금 다름 -->
+    <button>회원가입</button> <!-- type=button+type=submit의 기능이 같이 있음 -->
+
+    <input type="radio">
+    <input type="checkbox">
+    <hr>
+
+    <!-- 참조 https://dhlottery.co.kr/user.do?method=login&returnUrl= -->
+    <h3>로/그/인</h3>
+    <form> <!-- 사용자가 입력한 정보는 <form>단위로 서버로 전송됨 -->
+        <table border="1">
+        <tr>
+            <th>아이디</th>
+            <td><input type="text"></td>
+            <td rowspan="2">
+                <input type="submit" value="로그인">
+            </td>
+        </tr>
+        <tr>
+            <th>비밀번호</th>
+            <td><input type="password"></td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <input type="checkbox">ID저장
+                <input type="button" value="회원가입">
+                <input type="button" value="아이디/비번찾기">
+            </td>
+        </tr>
+        </table>
+        
+    </form>
+    
+    <!-- 주의 사항
+        예)잘못된 경우
+            <form>
+                <form></form>
+            </form>
+        예)잘된 경우
+            <form></form>
+            <form></form>
+    -->
+
+    <hr>
+    <h3>회/원/가/입</h3>
+    <!-- id="JavaScript나 jQuery접근시 주로 사용" -->
+    <!-- name="Backend단에서 접근시 주로 사용" -->
+
+    <!-- id는 식별자임. 식별자는 한글 절대 쓰면 안 됨!!-->
+    <!-- id는 프론트단에서 접근하기가 쉬움(단축키가 #이기 때문에)-->
+    <!-- 백엔드단에서는 name으로 form값을 먼저 인식함-->
+    <!-- 그래서 보통 id와 name이름을 똑같이 줌-->
+    <form id="memfrm" name="memfrm">
+        이름 :
+        <input type="text" autofocus> <!--autofocus : 커서가 자동으로 미리 그 위치에서 깜빡거리고 있는 기능-->
+        <hr>
+
+        아이디 :
+        <!--아래처럼 코드가 길어지면 엔터쳐서 보기 좋게 하기~ -->
+        <!--
+            placeholder: 칸 안에 글자가 들어가 있음
+            required: 글자개수가 1개 이상인 것을 요구하는 속성-->
+        <input type="text"
+               id="userid"
+               name="userid"
+               size="10"
+               maxlength="5"
+               placeholder="아이디입력해주세요"
+               required
+               >
+        <input type="button" value="중복확인">
+        <hr>
+
+        비밀번호 : 
+        <input type="password"
+               id="userpw"
+               name="userpw"
+               size="12"
+               maxlength="12"
+               placeholder="비밀번호를입력해주세요"
+               required
+               >
+        
+    <hr>
+
+    우편번호 :
+    <!--readonly: 커서가 못 들어감 -->
+    <input type="text" size="5" readonly>
+    <input type="button" value="주소찾기">
+    <hr>
+
+    나이 : 
+    <!-- 그룹을 지어주는 방법은 name을 같게 해준다. 
+    아래처럼 하면 radioage라고 name되어있는 항목들 중에 하나만
+    선택할 수 있다. 아래에서 age는 변수라고 한다. 또는 식별자. 
+    그리고 서버로 선택한 값을 보내줄 때는 value로 각 항목의 값을
+    설정하면 그 값이 서버로 가게 된다. -->
+    <input type="radio" name="age" value="10">10대
+    <input type="radio" name="age" value="20">20대
+    <input type="radio" name="age" value="30">30대
+    <hr>
+
+    성별 : 
+    <!-- checked: 항목 중에서 미리 선택되어저 있는 기능-->
+    <input type="radio" name="gender" value="m">남
+    <input type="radio" name="gender" value="f" checked>여
+    <hr>
+
+    취미 : 
+    <input type="checkbox" id="movie" name="movie" value="m">영화
+    <input type="checkbox" id="cook" name="cook" value="c" checked>요리
+    <input type="checkbox" id="book" name="book" value="b">독서
+    </form>
+    <hr>
+
+    <!-- 2. 여는 태그와 닫는 태그가 있는 폼 컨트롤 요소
+        이건 태그 사이에 문구가 텍스트값임 -->
+    <form id="myform" name="myform">
+        <button>버튼1</button>
+        <hr>
+
+        생년월일 :
+        <!--selected 목록이 있을 때 처음에 미리 보여지는 값-->
+        <!--서버로 쓰레기 값이 전송되는 걸 막기 위해 보통 value값을 준다.-->
+        <select id="myyear" name="myyear">
+            <option value="2022">2022년</option>
+            <option value="2021" selected>2021년</option>
+            <option value="2020">2020년</option>
+        </select>
+        <hr>
+
+        <!-- multiple : Ctrl이용해서 다중 선택 가능 -->
+        <select id="mymonth" name="mymonth" multiple>
+            <option value="1">1월</option>
+            <option value="2">2월</option>
+            <option value="3">3월</option>
+            <option value="4">4월</option>
+            <option value="5">5월</option>
+        </select>
+        <hr>
+
+        <!--input text는 입력내용에 한계가 textarea보다 작다-->
+        <!--maxlength로 글자수를 제한 할 수 있다.-->
+        <!--태그와 태그 사이에 있는 글자가 기본 입력값이 됨-->
+        배송메세지 : 
+        <textarea cols="50" rows="3" maxlength="200">200글자이내로 입력해 주세요</textarea>
+        <hr>
+
+        <!--서버로 전송하게 되면 폼 이름이 myform인데 이거 자체가 넘어가게 됨-->
+        <input type="submit" value="전송">
+        <input type="reset" value="취소">
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>02_inlineCSS.html</title>
+  </head>
+  <body>
+        <!--Inline CSS를 많이 사용하면 문서가 더러워짐.
+            잠깐 적용하고 없앨 때나 사용함 -->
+        <h3>1) Inline CSS </h3>
+        <!-- style="속성:값; ~~ " 속성 -->
+
+        <!-- CSS는 단위생략하면 안 됨. 생략해서 마크는 될지라도 프로그래밍으로 넘어가면 안 될 수 있음.-->
+        <!--세미콜론을 중심으로 /**/ 안에 주석을 단다-->
+        <div style="width: 200px; height: 150px; background-color: rgb(250, 175, 175);"></div>
+        <div style="width: 100px; /*가로크기*/
+                    height: 100px; /*세로크기*/ 
+                    /*속성하나만 주석을 달 때는 --를 쓰면 된다.*/
+                    --background-color: rgb(197, 197, 255);"></div>
+
+        <hr>
+        <div style="width: 100%; height: 100px; background-color: rgb(179, 209, 179);"></div>
+        <hr>
+        <div style="width: 50%; height: 100px; background-color: rgb(164, 147, 180);"></div>
+        <hr>
+
+        <!-- 참조 https://www.w3schools.com/css/css_background.asp -->
+        <!-- background 배경 관련 스타일 -->
+        <!--CSS에서는 4방향을 할 때 시계방향으로 생각하면 된다.위-오른쪽-아래-왼쪽-->
+        <div style="width: 300px;
+                    height: 300px;
+                    background-image: url(../images/angel.png);
+                    background-repeat: no-repeat;
+                    background-position: right bottom;
+                    background-size: 10% 10%; /*가로 세로*/"></div>
+        <hr>
+
+
+        <!-- 참조 https://www.w3schools.com/css/css_text.asp -->
+        <!-- 텍스트 관련 스타일 -->
+        <!--strong같이 html와 css에서 겹치는 태그가 많다. 이럴 때 가급적 css사용하기.
+            strong은 가급적 css를 사용하기~! u도 CSS를 사용하기-->
+        <div style="width: 300px; height: 300px; background-color: rgb(243, 243, 180);
+                    --color: brown; /*글자색*/ /*뺄 요소는 --를 맨 앞에 붙여주면 빠짐*/
+                    text-decoration: underline; /*밑줄*/
+                    text-indent: 50px; /*들여쓰기*/ 
+                    text-shadow: 1px 0.5px rgb(110, 110, 143); /*그림자 수평(2) 수직(1) 색깔
+                    letter-spacing: -3px; /*글자간격*/
+                    line-height: 20px; /*줄간격*/
+                    word-spacing: 10px /*단어간격. 아마 아무런 말이 없다면 단어간격의 기준은 space를 기준으로 할 듯.*/;">
+            웹 페이지 전체의 일관성을 유지할 수 있도록 스타일을 미리 저장해 둔 시트를 의미한다. 
+            웹 페이지를 HTML로만 작성할 경우에는 스타일 변경에 제약이 있으나, 
+            스타일을 미리 저장해 두고 일부 내용의 스타일을 변경할 때 
+            전체 페이지의 내용을 한꺼번에 처리할 수 있어 간편하고 
+            페이지의 일관성을 유지할 수 있다.
+        </div>
+
+
+
+  </body>
+</html>

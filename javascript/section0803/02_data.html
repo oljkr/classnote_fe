@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_data.html</title>
+</head>
+<body>
+    <h1>데이터, 값, Data, Value</h1>
+    <script>
+
+        //본문(<body>)에 출력 document.write()
+        //document 는 body를 나타내는 객체 write()는 출력을 하는 함수
+        //1. 숫자형
+        document.write(123);
+        document.write(456);
+        document.write(789);
+
+        //2. 문자형
+        //->반드시 ' ' 또는 " "기호로 감싼다
+        //자바는 ' '와 " "를 구분하지 않는데 js는 구분함!
+        document.write('KOREA');
+        document.write("SEOUL");
+
+        //에러
+        //->크롬브라우저에서 F12를 이용해서 에러메세지 분석후 수정
+        //document.write('JEJU"); 안 됨.
+        //document.write(대한민국); 안 됨.
+
+        //3. 논리형 (boolean)
+        //-> 맞다(참 true), 틀리다(거짓 false)
+        document.write(true); //여기의 true는 논리형
+        document.write(false);
+        document.write('true'); //여기의 true는 문자형
+
+        document.write(10); //양의 정수
+        document.write(-20); //음의 정수
+        document.write(3.4); //실수
+        document.write(-5.6); //실수
+        document.write("false"); //문자형
+        document.write('1004'); //문자형
+
+        let name="손흥민";
+        let age=25;
+        let height=178.9;
+    </script>
+
+    
+</body>
+</html>

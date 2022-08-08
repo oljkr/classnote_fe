@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--참조 https://www.w3schools.com/html/html_forms_attributes.asp -->
+
+    <h3>1. 폼 관련 속성들</h3>
+    <!--
+        id=""       폼 아이디 (주로 Frontend단에서 접근시 사용)
+        name=""     폼 이름 (주로 Backend단에서 접근시 사용)
+        action=""   사용자가 입력 요청한 정보를 서버측에서 받는 페이지명 또는 평령어
+                    (페이지명은 jsp로도 가능한데 명령어를 사용하려면 스프링이 필요)
+        method=""   전송방식 get 또는 post
+        enctype=""  전송할 때 파일을 첨부해서 전송...
+    -->
+    <!--action : 전송되는 id와 submit을 받는 애를 지정하는애 
+        ok.jsp ok.py ok.php ok.asp 같은 백엔드단의 파일을 적게 된다. 
+        전송버튼을 누르면 아래 사진처럼 주소와 페이지가 바뀐다.-->
+    <form id="loginfrm" name="loginfrm" action="ok.jsp">
+        아이디 : <input type="text" name="userid"> <hr>
+        비밀번호 : <input type="password" name="userpw"> <hr>
+        <input type="submit" value="전송">
+    </form>
+    <hr>
+
+    <!-- 파일 첨부해서 전송.
+        첨부해서 파일을 같이 보내고 싶을 때 enctype을 사용해야 한다. -->
+    <form enctype="multipart/form-data">
+        첨부파일 : <input type="file">
+    </form>
+    <hr>
+
+    <h3>2. type=image </h3>
+    <form action="ok2.jsp">
+        <!-- 아래는 클릭을 해도 변화가 없음-->
+        <img src="../images/angel.png">
+        <hr>
+        <!--아래는 올리는 손모양으로 변하고 클릭을 하면 ok2.jps로 이동함. 전송기능이 숨겨져 있음
+        검색사이트의 돋보기를 누르면 페이지가 이동하는 것같은 곳에서 사용할 수 있음-->
+        <!-- <img src=''>+ type=submit 기능 -->
+        <input type="image" src="../images/devil.png">
+
+        <hr>
+        검색 : <input type="text" name="search">
+        <input type="image" src="../images/search.png">
+        <hr>
+    </form>
+    <hr>
+
+    <h3>3. 다양한 Input Types </h3>
+    <!-- 참조 https://www.w3schools.com/html/html_form_input_types.asp -->
+    <!--개발자에겐 필요하지만 유저에겐 필요하지 않는 요소에 hidden을 사용할 수 있음-->
+    <!-- HTML페이지에서 노출되지는 않지만 form에 포함된 컨트롤 요소 -->
+    <input type="hidden" id="page" name="page" value="3">
+    <input type="hidden" id="col" name="col" value="title">
+
+    <!--number: 주민번호나 핸드폰번호 입력 할 때 숫자만 입력해야하니까 타입을 number로 막을 때 사용
+    min과 max안에서 기입할 수 있도록 제한할 수 있음-->
+    <input type="number" id="quantity" name="quantity" min="1" max="5">
+    <hr>
+    <input type="range" id="vol" name="vol" min="0" max="50">
+    <hr>
+    <input type="color"><hr>
+    <input type="date"> <hr>
+    <input type="search"> <hr>
+    <input type="time"> <hr>
+    <hr>
+
+    <h3>4. label </h3>
+    <!--한글로 적혀진 곳에 클릭을 해도 input박스에 자동으로 커서를 연결해 줌-->
+    <label for="user">이름 :</label>
+    <input type="text" id="user">
+
+
+</body>
+</html>
