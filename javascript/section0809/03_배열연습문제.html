@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03_배열연습문제.html</title>
+  </head>
+  <body>
+    <h2>배열 연습문제</h2>
+
+    <script>
+        let num=[7,8,-9,5,6];
+        let size=num.length;    //5
+
+        document.write(num);
+        document.write("<hr>");
+
+        //문1)배열 요소의 전체 합을 구하시오
+        document.write("문1 : ");
+        let sum=0;
+        for(let x=0;x<num.length;x++){
+            sum+=num[x];
+        }
+        document.write(sum);
+        document.write("<br>");
+
+        //선생님 풀이
+        document.write(num[0]+num[1]+num[2]+num[3]+num[4]);
+        document.write("<br>");
+
+        let hap=0;
+        for(let i=0;i<size;i++){
+            hap=hap+num[i];
+        }
+        document.write(hap);
+        document.write("<hr>");
+
+        //문2)음수의 갯수를 구하시오
+        document.write("문2 : ");
+        let cnt=0;
+        for(let x=0; x<num.length;x++){
+            if(num[x]<0) cnt++;
+        }
+        document.write(cnt);
+        document.write("<br>");
+
+        var count=0;
+        for(let i=0; i<5; i++){
+            if(num[i]<0){
+                count++;
+            }
+        }
+        document.write("음수의 갯수 : "+count);
+
+        document.write("<hr>");
+        //문3)최대값, 최소값을 각각 구하시오
+        document.write("문3 : ");
+        let max3=num[0], min3=num[0];
+        for(let x=1;x<num.length;x++){
+            if(max3<num[x]){
+                max3=num[x];
+            }
+            if(min3>num[x]){
+                min3=num[x];
+            }
+        }
+        document.write("<br>");
+        document.write("최댓값 : ");
+        document.write(max3);
+        document.write("<br>");
+        document.write("최솟값 : ");
+        document.write(min3);
+
+        document.write("<br>");
+
+        //선생님 풀이
+        //1)
+        document.write(Math.max(...num));
+        document.write("<br>");
+        document.write(Math.min(...num));
+        document.write("<br>");
+
+        //2)내림차순 정렬한 후, 최대값, 최소값 구하기
+        num.sort(function(a, b){return b - a});
+        document.write(num[0]);         //최대값
+        document.write("<br>");
+        document.write(num[size-1]);    //최소값
+        document.write("<br>");
+
+        //3)
+        let max=num[0]; //최대값
+        let min=num[0]; //최소값
+
+        for(let i=0; i<size; i++){
+            if(max<num[i]) max=num[i];
+            if(min>num[i]) min=num[i];
+        }
+
+        document.write("최댓값 : ");
+        document.write(max);
+        document.write("<br>");
+        document.write("최솟값 : ");
+        document.write(min);
+        document.write("<hr>");
+
+        //문4)num[4]요소의 등수를 구하시오
+        //숫자가 큰 것을 1등으로 처리하기
+        document.write("문4 : ");
+        let grade4=1;
+        for(let x=0;x<num.length;x++){
+            if(x==num[4]) continue;
+            if(num[x]>num[4]) grade4++;
+        }
+        document.write(grade4+"등");
+        document.write("<br>");
+        
+        //선생님 풀이
+        let r=1;
+        for(let i=0;i<size;i++){
+            if(num[4]<num[i]){
+                r++;
+            }
+        }
+
+        document.write("num[4]요소의 등수: "+r);
+        document.write("<hr>");
+
+        //문5) num배열 요소의 각각의 등수를 모두 구하시오
+        document.write("문5 : ");
+        let grade;
+        for(let y=0;y<num.length;y++){
+            grade=1;
+            for(let x=0;x<num.length;x++){
+                if(x==y) continue;
+                if(num[x]>num[y]) grade++;
+            }
+            document.write(grade+"등 ");
+        }
+        document.write("<br>");
+        
+        //선생님 풀이
+        let rank=[1,1,1,1,1];
+        for(let a=0;a<size;a++){
+            for(let b=0;b<size;b++){
+                if(num[a]<num[b]) {
+
+                    rank[a]=rank[a]+1;
+                }
+             }
+        }
+        document.write(rank);
+        
+    </script>
+  </body>
+</html>
