@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02_배열메소드.html</title>
+  </head>
+  <body>
+    <h3>배열 객체 관련 메소드(함수)</h3>
+
+    <script>
+        //참조 https://www.w3schools.com/js/js_array_methods.asp
+
+        let fruits=["Banana", "Orange", "Apple", "Mango"];
+
+        document.write(fruits);
+        document.write("<br>");
+
+        //toString() :(함수이기 때문에 뒤에 괄호가 반드시 와야 함)
+        //배열 요소를 하나의 문자열로 바꿔서 출력. 아래처럼 바뀜
+        //"Banana,Orange,Apple,Mango"
+        document.write(fruits.toString());
+        document.write("<br>");
+        //문자 덩어리 앞뒤로 #을 붙여줌.
+        document.write("#"+fruits.toString()+"#");
+        document.write("<br>");
+
+        document.write(fruits.length);  //4 배열 요소의 갯수
+        document.write("<br>");
+        //문자로 형변환을 한 후 그 문자의 갯수가 어떻게 되는지
+        document.write(fruits.toString().length);//25
+        document.write("<br>");
+
+        //요소와 요소를 ,가 아닌 *로 구분
+        //(요소와 요소를 *로 합쳐주세요 라는 뜻)
+        document.write(fruits.join("*"));
+        document.write("<br>");
+
+        fruits.pop()    //배열 마지막 요소 제거
+        document.write(fruits);//Banana,Orange,Apple
+        document.write("<br>");
+
+        fruits.push("Kiwi");    //배열 마지막 요소 추가
+        document.write(fruits); //Banana,Orange,Apple,Kiwi
+        document.write("<br>");
+
+        fruits.shift(); //배열 맨앞 요소 제거
+        document.write(fruits);//Orange,Apple,Kiwi
+        document.write("<br>");
+
+        fruits.unshift("Lemon");//배열 맨앞 요소 추가
+        document.write(fruits);//Lemon,Orange,Apple,Kiwi
+        document.write("<br>");
+
+        //.splice(0, n) : 0번째부터 (n-1)번째까지 제거
+        fruits.splice(0, 2); //0번째 부터 (2-1)번째 까지 제거
+        document.write(fruits); //Apple,Kiwi
+        document.write("<br>");
+
+        //배열 요소 합치기
+        let arr1=["손흥민","김연아"];
+        let arr2=["무궁화","개나리","진달래"];
+        let arr3=["국어","영어"];
+        let arr5=["봄","여름"];
+        //concat(1, 2) : arr1에 1번요소와 2번을 합쳐서..(더 추가 가능)
+        //arr4에 대입해주세요.
+        let arr4=arr1.concat(arr2, arr3, arr5);
+        document.write(arr4);
+        document.write("<br>");
+        let arr6=arr2.concat(arr3, arr4);
+        document.write(arr6);
+        document.write("<br>");
+        let arr7=arr5.concat(arr3, arr2);
+        document.write(arr7);
+        document.write("<hr>");
+        ///////////////////////////////////////////////////////////
+        
+        //참조 https://www.w3schools.com/js/js_array_sort.asp
+        /*
+            🐢정렬(Sort)
+             - 어떤 Key값을 기준으로 순서대로 재배치
+             - 정렬유형 : 오름차순 Ascending   ASC 1->10, A->Z, a->z
+                          내림차순 Descending  DESC
+             - 정렬방식 : insertion sort 삽입정렬, selection sort 선택정렬, bubble sort, ~~~
+        */  
+
+        //1)문자형
+        fruits=["Banana", "Orange", "Apple", "Mango"];
+
+        fruits.sort();          //배열요소 오름차순 정렬
+        document.write(fruits); //Apple,Banana,Mango,Orange
+        document.write("<br>");
+
+        fruits.reverse();          //배열요소 내림차순 정렬
+        document.write(fruits); //Orange,Mango,Banana,Apple
+        document.write("<br>");
+
+        flower=["프리지아","쟈스민","국화"];
+        //한글도 배열정렬 함수 가능!
+        flower.sort();
+        document.write(flower);
+        document.write("<br>");
+
+        //2)숫자형 Numeric Sort
+        let points = [40, 100, 1, 5, 25, 10];
+
+        points.sort(function(a, b){return a - b});
+        document.write(points); //오름차순 1,5,10,25,40,100
+        document.write("<br>");
+
+        points.sort(function(a, b){return b - a});
+        document.write(points); //내림차순 100,40,25,10,5,1
+        document.write("<hr>");
+
+    </script>
+  </body>
+</html>
