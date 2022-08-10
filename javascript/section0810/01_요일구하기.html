@@ -46,13 +46,28 @@
         for(let m=1; m<cMonth; m++){
             hap+=mon[m];
         }
-        //3
+        //3)단계
         hap+=cDate;
 
         document.write(cYear+"년"+cMonth+"월"+cDate+"일");
         document.write("<br>");
         document.write("총날수:"+hap);
+        document.write("<br>");
+
+        switch(hap%7){
+            case 0: document.write("일요일"); break;
+            case 1: document.write("월요일"); break;
+            case 2: document.write("화요일"); break;
+            case 3: document.write("수요일"); break;
+            case 4: document.write("목요일"); break;
+            case 5: document.write("금요일"); break;
+            case 6: document.write("토요일"); break;
+        }
         document.write("<hr>");
+
+        //문) 년도 cYear값의 띠를 출력하시오(12간지)
+        let animal=["🐒","🐔","🐕","🐷","🐭","🐮","🐯","🐰","🐲","🐍","🐴","🐏"];
+        document.write("띠:"+animal[cYear%12]);
 
     </script>
   </body>

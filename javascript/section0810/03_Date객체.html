@@ -15,7 +15,107 @@
         //Date 날짜 관련 내장 객체
 
         const d=new Date(); //시스템의 현재 날짜 정보 가져오기
-        document.write(d);
+        /*
+        document.write(d+"<br>");
+        document.write(d.getFullYear()+"연");
+        document.write("<br>");
+        //자바스크립트에서 getMonth()는 0부터 카운터하기 때문에 8월이면 7로 나옴
+        document.write(d.getMonth()+1+"월");
+        document.write("<br>");
+        document.write(d.getDate()+"일");
+        document.write("<br>");
+        document.write(d.getHours()+"시");
+        document.write("<br>");
+        document.write(d.getMinutes()+"분");
+        document.write("<br>");
+        document.write(d.getSeconds()+"초");
+        document.write("<br>");
+
+        const days=["일","월","화","수","목","금","토"];
+        document.write(days[d.getDay()]+"요일");
+        document.write("<hr>");
+        */
+        
+        //문) 날짜변수 d값을 이용해서 날짜 정보를 아래와 같이 구성해서 id=clock에 출력하시오
+        //    2022.08.10 (수) PM 3:05:42
+        const days=["일","월","화","수","목","금","토"];
+
+        // let today="";
+        // today += d.getFullYear() + "."; //2022
+
+        // if((d.getMonth()+1)<10){
+        //     today+="0"+(d.getMonth()+1)+".";
+        // }else today+=(d.getMonth()+1)+".";
+
+        // if(d.getDate()<10){
+        //     today+="0"+(d.getDate())+".";
+        // }else today+=(d.getDate())+". ( ";
+
+        // today+=days[d.getDay()] + " ) ";
+
+        // if(d.getHours()>13){
+        //     today+= "PM "+(d.getHours()-12)+":";
+        // }else today+= "PM "+d.getHours()+":";
+
+        // if(d.getMinutes()<=10){
+        //     today+= "0"+d.getMinutes()+":";
+        // }else today+= +d.getHours()+":";
+
+        // if(d.getSeconds()<=10){
+        //     today+= "0"+d.getSeconds();
+        // }else today+= +d.getSeconds();
+
+
+        // document.getElementById("clock").innerHTML=today; //결과값을 HTML tag형식으로 출력
+
+        //선생님풀이
+
+        today="";
+        today += d.getFullYear() + "."; //2022
+
+        if((d.getMonth()+1)<10){
+            today+="0";
+        }
+        today+=d.getMonth()+1+".";  //2022.08
+
+        if(d.getDate()<10){
+            today+="0";
+        }
+        today+=d.getDate(); //2022.08.10
+        
+        switch(d.getDay()){
+            case 0 : today+=" (일) "; break;
+            case 1 : today+=" (월) "; break;
+            case 2 : today+=" (화) "; break;
+            case 3 : today+=" (수) "; break;
+            case 4 : today+=" (목) "; break;
+            case 5 : today+=" (금) "; break;
+            case 6 : today+=" (토) "; break;
+        }
+
+        if(d.getHours()<12){
+            today+="AM ";
+        }else{
+            today+="PM ";    //2022.08.10 (수) PM 
+        }
+
+        if(d.getHours()<13){
+            today += d.getHours() + ":";
+        }else{
+            today += d.getHours()-12 + ":";
+        }
+
+        if(d.getMinutes()<10){
+            today+="0";
+        }
+        today+=d.getMinutes() + ":";
+
+        if(d.getSeconds()<10){
+            today+="0";
+        }
+        today+=d.getSeconds();
+        document.getElementById("clock").innerText=today; //결과값을 HTML tag형식으로 출력
+
     </script>
   </body>
 </html>
