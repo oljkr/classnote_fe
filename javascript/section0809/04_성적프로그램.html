@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04_성적프로그램.html</title>
+    <style>
+        #demo {
+            height: 280px;
+            width: 600px;
+            background-color: rgb(248, 245, 194);
+            color: black;
+        }
+        table {
+          height: 280px;
+          width: 600px;
+        }
+    </style>
+  </head>
+  <body>
+    <h3>성적 프로그램</h3>
+    <div id="demo"></div>
+    <script>
+        /*
+        --------------------------------------------------------
+        이름   국어 영어 수학 평균 등수 결과
+        --------------------------------------------------------
+        무궁화 100  100  100  100  1    합격   ********** 장학생
+        홍길동  20   50   30   33  5    불합격 ***
+        개나리  90   95   90   91  2    합격   *********
+        진달래  70   80   60   70  4    합격   *******
+        라일락  35  100  100   78  3    재시험 *******
+        --------------------------------------------------------
+        */
+
+        //1. 자료
+        let aver=[0,0,0,0,0];
+        let grade=[1,1,1,1,1];
+        let pass=["합격","합격","합격","합격","합격"];
+        let star=[0,0,0,0,0];
+        let special=[0,0,0,0,0];
+        
+        let uname= ["라일락","진달래","개나리","무궁화","홍길동"];
+        let kor  = [100, 50, 95, 80, 60];
+        let eng  = [100, 55, 95, 85, 40];
+        let mat  = [100, 60, 35, 90, 30];
+        let size = uname.length;    //5
+
+        //2.총점, 평균, 등수, 합불합 구하기
+        for(let x=0;x<uname.length;x++){
+            let total=kor[x]+eng[x]+mat[x];  //총점구하기
+            aver[x] =Math.floor(total/3);  //평균구하기
+
+            if(aver[x]>=70){
+                if(kor[x]<40||eng[x]<40||mat[x]<40){
+                    pass[x]="재시험";
+                }
+            }else pass[x]="불합격";
+
+            star[x]=Math.floor(aver[x]/10);
+
+        
+        if(aver[x]>=95) special[x]=1;
+        }
+
+        for(let y=0;y<5;y++){
+            for(let x=0;x<5;x++){
+                if(y==x) continue;
+                if(aver[y]<aver[x]) grade[y]++;
+            }
+        }
+
+        //3. 출력하기
+        let result="";
+        
+        result+= "<table border='1';>";
+        result+= "<tr >";
+        result+= "  <th>이름</th>";
+        result+="   <td>" + "국어";
+        result+="   <td>" + "영어";
+        result+="   <td>" + "수학";
+        result+="   <td>" + "평균";
+        result+="   <td>" + "등수";
+        result+="   <td>" + "결과";
+        result+="</tr>";
+
+
+        let prt=[kor,eng,mat,aver,grade];
+            //for문으로 돌려서 내용출력
+        for(let x=0;x<5;x++){
+            //*과 장학생 여부 추가
+        let string=pass[x]+" ";
+        for(let i=0;i<star[x];i++){
+            string+="*";
+        }
+        string+=" ";
+        if(special[x]==1){
+            string+="장학생"
+        }
+
+        result+= "<tr >";
+        result+= "  <th>"+uname[x]+"</th>";
+        for(let y=0;y<5;y++){
+            result+="   <td>" + prt[y][x];
+        }
+        result+="   <td>" + string;
+        result+="</tr>";
+        }
+
+        document.getElementById("demo").innerHTML=result; //결과값을 HTML tag형식으로 출력
+
+    </script>
+  </body>
+</html>
