@@ -34,12 +34,12 @@
         --------------------------------------------------------
         */
 
-        //1. 자료
-        let aver=[0,0,0,0,0];
-        let grade=[1,1,1,1,1];
-        let pass=["합격","합격","합격","합격","합격"];
-        let star=[0,0,0,0,0];
-        let special=[0,0,0,0,0];
+        // //1. 자료
+        // let aver=[0,0,0,0,0];
+        // let grade=[1,1,1,1,1];
+        // let pass=["합격","합격","합격","합격","합격"];
+        // let star=[0,0,0,0,0];
+        // let special=[0,0,0,0,0];
         
         let uname= ["라일락","진달래","개나리","무궁화","홍길동"];
         let kor  = [100, 50, 95, 80, 60];
@@ -47,69 +47,137 @@
         let mat  = [100, 60, 35, 90, 30];
         let size = uname.length;    //5
 
-        //2.총점, 평균, 등수, 합불합 구하기
-        for(let x=0;x<uname.length;x++){
-            let total=kor[x]+eng[x]+mat[x];  //총점구하기
-            aver[x] =Math.floor(total/3);  //평균구하기
+        // //2.총점, 평균, 등수, 합불합 구하기
+        // for(let x=0;x<uname.length;x++){
+        //     let total=kor[x]+eng[x]+mat[x];  //총점구하기
+        //     aver[x] =Math.floor(total/3);  //평균구하기
 
-            if(aver[x]>=70){
-                if(kor[x]<40||eng[x]<40||mat[x]<40){
-                    pass[x]="재시험";
-                }
-            }else pass[x]="불합격";
+        //     if(aver[x]>=70){
+        //         if(kor[x]<40||eng[x]<40||mat[x]<40){
+        //             pass[x]="재시험";
+        //         }
+        //     }else pass[x]="불합격";
 
-            star[x]=Math.floor(aver[x]/10);
+        //     star[x]=Math.floor(aver[x]/10);
 
         
-        if(aver[x]>=95) special[x]=1;
+        // if(aver[x]>=95) special[x]=1;
+        // }
+
+        // for(let y=0;y<5;y++){
+        //     for(let x=0;x<5;x++){
+        //         if(y==x) continue;
+        //         if(aver[y]<aver[x]) grade[y]++;
+        //     }
+        // }
+
+        // //3. 출력하기
+        // let result="";
+        
+        // result+= "<table border='1';>";
+        // result+= "<tr >";
+        // result+= "  <th>이름</th>";
+        // result+="   <td>" + "국어";
+        // result+="   <td>" + "영어";
+        // result+="   <td>" + "수학";
+        // result+="   <td>" + "평균";
+        // result+="   <td>" + "등수";
+        // result+="   <td>" + "결과";
+        // result+="</tr>";
+
+
+        // let prt=[kor,eng,mat,aver,grade];
+        //     //for문으로 돌려서 내용출력
+        // for(let x=0;x<5;x++){
+        //     //*과 장학생 여부 추가
+        // let string=pass[x]+" ";
+        // for(let i=0;i<star[x];i++){
+        //     string+="*";
+        // }
+        // string+=" ";
+        // if(special[x]==1){
+        //     string+="장학생"
+        // }
+
+        // result+= "<tr >";
+        // result+= "  <th>"+uname[x]+"</th>";
+        // for(let y=0;y<5;y++){
+        //     result+="   <td>" + prt[y][x];
+        // }
+        // result+="   <td>" + string;
+        // result+="</tr>";
+        // }
+
+        // document.getElementById("demo").innerHTML=result; //결과값을 HTML tag형식으로 출력
+
+        //1)평균구하기
+        let aver=[0,0,0,0,0];
+        for(let i=0;i<size;i++){
+            aver[i]=parseInt((kor[i]+eng[i]+mat[i])/3);
         }
 
-        for(let y=0;y<5;y++){
-            for(let x=0;x<5;x++){
-                if(y==x) continue;
-                if(aver[y]<aver[x]) grade[y]++;
+        //2)등수구하기(평균을 기준으로)
+        let rank=[1,1,1,1,1];
+        for(let a=0; a<size; a++){
+            for(let b=0; b<size; b++){
+                if(aver[a]<aver[b]){
+                    rank[a]++;
+                }
             }
         }
 
-        //3. 출력하기
-        let result="";
+        //3)출력
+        let result="";  //결과값
+        result += "";
+        result += "<table border='1'>";
+        result += "<tr >";
+        result += "  <th>이름</th>";
+        result += "  <th>국어</th>";
+        result += "  <th>영어</th>";
+        result += "  <th>수학</th>";
+        result += "  <th>평균</th>";
+        result += "  <th>등수</th>";
+        result += "  <th>결과</th>";
+        result += "</tr>";
+
+        //4)5명의 성적을 출력하기
+        for(let i=0; i<size; i++){
+            result += "<tr>";
+            result += "  <td>" + uname[i] + "</td>";
+            result += "  <td>" + kor[i] + "</td>";
+            result += "  <td>" + eng[i] + "</td>";
+            result += "  <td>" + mat[i] + "</td>";
+            result += "  <td>" + aver[i] + "</td>";
+            result += "  <td>" + rank[i] + "</td>";
+            result += "  <td>"
+                //5)과락(합격, 재시험, 불합격)
+                if(aver[i]>=70){
+                    if(kor[i]<40 || eng[i]<40 || mat[i]<40){
+                        result += "재시험";
+                    }else{
+                        result += "합 격";
+                    }
+                }else{
+                    result += "불합격";
+                }
+                //6)평균 10점당 * 한개씩
+                for(star=1; star<=parseInt(aver[i]/10); star++){
+                    result+="*";
+                }
+
+                //7)평균 95점이상이면 장학생
+                if(aver[i]>=95){
+                    result += "<span style='color:red; font-weight:bold'>장학생</span>";
+                }
+                
+            result += "  </td>"
+            result += "</tr>";
+        }
+
+        result += "</table>";
+
+        document.getElementById("demo").innerHTML=result;
         
-        result+= "<table border='1';>";
-        result+= "<tr >";
-        result+= "  <th>이름</th>";
-        result+="   <td>" + "국어";
-        result+="   <td>" + "영어";
-        result+="   <td>" + "수학";
-        result+="   <td>" + "평균";
-        result+="   <td>" + "등수";
-        result+="   <td>" + "결과";
-        result+="</tr>";
-
-
-        let prt=[kor,eng,mat,aver,grade];
-            //for문으로 돌려서 내용출력
-        for(let x=0;x<5;x++){
-            //*과 장학생 여부 추가
-        let string=pass[x]+" ";
-        for(let i=0;i<star[x];i++){
-            string+="*";
-        }
-        string+=" ";
-        if(special[x]==1){
-            string+="장학생"
-        }
-
-        result+= "<tr >";
-        result+= "  <th>"+uname[x]+"</th>";
-        for(let y=0;y<5;y++){
-            result+="   <td>" + prt[y][x];
-        }
-        result+="   <td>" + string;
-        result+="</tr>";
-        }
-
-        document.getElementById("demo").innerHTML=result; //결과값을 HTML tag형식으로 출력
-
     </script>
   </body>
 </html>
