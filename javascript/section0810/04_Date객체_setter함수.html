@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04_Date객체_setter함수.html</title>
+  </head>
+  <body>
+    <h3>Date객체 날짜 세팅</h3>
+
+    <script>
+        //참조 https://www.w3schools.com/js/js_date_methods_set.asp
+
+        const someday = new Date();
+        someday.setFullYear(1956,6,24); //1956년 7월 24일
+        document.write(someday.getFullYear());
+        document.write("<br>");
+        document.write(someday.getMonth()+1);
+        document.write("<br>");
+        document.write(someday.getDate());
+        document.write("<br>");
+
+        const days=["일","월","화","수","목","금","토"];
+        document.write(days[someday.getDay()]);
+        document.write("<hr>");
+
+        const d=new Date();
+        d.setDate(someday.getDate()+10);  //someday값에서 10일 더하기(1989.8.3);
+        document.write(d.getDate());  //3
+
+    </script>
+
+  </body>
+</html>
