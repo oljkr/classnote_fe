@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05_함수.html</title>
+  </head>
+  <body>
+    <h3>사용자 정의 함수</h3>
+
+    <script>
+    //참조 https://www.w3schools.com/js/js_functions.asp
+    /*
+        🎨함수, function, method ⭐⭐⭐⭐⭐ 
+        - 일정한 기능을 가지고 있다.
+        - 함수작성(정의), 함수호출
+        - 형식) function 함수명() {}
+        - 예) document.write() ()값을 웹브라우저 본문영역(<body>)에 출력하는 함수
+
+        🎨함수 작성시 고려사항
+        - 매개변수(parameter)가 있는지?
+        - 리턴값(return)이 있는지?
+    */
+
+        function test1(){
+            document.write("KOREA");
+        }
+
+        function test2(){
+            document.write("SEOUL");
+        }
+        function test3(a){  //a는 매개변수(parameter)
+                            //js에서 매개변수는 자료형이 없음. 쓰면 에러남.(let, var, const 사용불가)
+            document.write(a);
+
+        }
+        //1. 전달값이 없는 경우 (argument value)
+        test1();    //함수 호출
+        test1();
+        test2();
+        test2();
+
+        //2. 전달값이 있는 경우
+        test3(10);
+        test3(20);
+        test3(30);
+
+    </script>
+  </body>
+</html>
