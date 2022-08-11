@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03_내장객체.html</title>
+  </head>
+  <body>
+    <h3>내장객체</h3>
+    <script>
+        //참조 https://www.w3schools.com/js/js_objects.asp
+        //참조 https://www.w3schools.com/jsref/default.asp
+
+        /*
+          🍒자바스크립트 내장 객체(Object)
+            - Object = 멤버변수 + 멤버함수로 구성
+            - 멤버변수, property, attribute, field(자바), column(DB)
+            - 멤버함수, function, method
+            - 객체명.멤버변수
+            - 객체명.멤버함수()
+        */
+
+        // //1. Math객체
+        // document.write(Math.abs(-3));
+        // document.write(Math.PI);//멤버변수
+
+        // //2. Number객체
+        // document.write(Number("5"));//생성자함수, 객체
+        // document.write(Number("8.9"));
+
+        // //3. Date객체
+        // const d=new Date();
+        //////////////////////////////////////////////
+
+        //4. window 객체
+        //참조 https://www.w3schools.com/jsref/obj_window.asp
+        //-> 객체명을 생략할 수 있다.(window라는 말을 써도 되고 안 써도 되고)
+        //오브젝트가 계층구조가 있는데 window객체가 js의 뿌리이다 보니 안 써도 됨
+        //  1) alert() 경고창(확인)⭐
+        //window.alert();
+        //alert();
+        //alert(123); //123이 경고창 위에 뜸
+        // alert("Hello world");
+        // alert("today is...");
+        //'와 "를 출력하려 할 때는 '',""를 쓰거나 \를 사용
+        // alert("'");
+        // alert('"');
+        // alert("\"");
+        // alert('\'');
+        //alert("서울\n제주\n\n부산"); // \n줄바꿈
+
+        //  2)confirm() : 확인과 취소가 같이 나오는 경고창⭐
+        //  -> boolean(true, false)값으로 반환된다.(확인:return true, 취소:return false)
+        // window.confirm();
+        // confirm(); //window객체명 생략 가능!
+        // let flag=confirm("영구히 삭제됩니다\n지울까요?");
+        // alert(flag);
+
+        //  3)새창 띄우기
+        //팝업창을 만들 때 사용->open()과 close():이건 모바일에서는 동작을 안 함. 컴퓨터에서는 동작함.
+        //요새는 새로운 창, 탭이 아닌 현재페이지에 한번 더 올리는 식으로 함.(레이어를 까는 것. 모달창)
+        //window.open();
+
+        //  4)인쇄창 띄우기
+        //window.print();
+
+        //  5)setInterval(); clearInterval(); setTimeout(); clearTimeout();
+        /*
+            - 주어진 시간에 따라 자동으로 함수 호출
+            - 시간의 단위는 1 second = 1000 milliseconds. ex)0.5초 쓰려면 500주면 됨
+            - new version
+                setInterval(함수명, 시간) : 주기적으로 함수 호출
+                setTimeout(함수명, 시간) : 한번만 호출
+            - old version
+                setInterval("함수명()", 시간)
+                setTimeout("함수명()", 시간)
+            - 시간해제 : clearInterval(), clearTimeout()
+        */
+    //    function hello(){
+    //     alert("안녕하세요~");
+    //    }
+
+       //setInterval(hello, 3000); //3초마다 주기적으로 hello함수 호출
+       //setTimeout(hello, 3000); //3초후에 hello함수 단 1번만 호출
+       /*
+            재귀적 함수 호출 관계를 이용해서 3초마다 주기적으로 hello함수 호출
+            (디지털 시계 만들 때 사용하면 좋을 듯)
+            function hello(){
+                setTimeout(hello, 3000);
+            }
+       */
+       
+
+       //5. screen객체
+       //->사용자 device의 해상도 확인
+    //    alert(screen.width);
+    //    alert(screen.height);
+
+    //    let w=screen.width, h=screen.height;
+    //    alert(w+" "+h);    
+       //팝업창을 사이트 정가운데에 위치하고 싶으면 사용자의 해상도를 가지고 와야함
+       //이 때 screen 객체 사용
+
+       //6. location객체
+       //-> 페이지 이동
+       //아래 두개 다 맞는 표현임
+       //-> location.href="URL 또는 페이지명"//이거 앞에는 window. 이 생략되어있음
+       //-> location="URL 또는 페이지명"
+       location.href="https://www.itwill.co.kr/";
+    //    location.reload(); //현재 페이지 새로고침
+       //주기적으로 새로고침하고싶으면(ex.증권사 사이트) meta태그를 사용하는 것이 나음.
+       //I:\java202207\frontend\css의 21_meta.html참고
+
+       //7. history 객체
+       //-> 뒤로, 앞으로
+       history.back();
+       history.forward();
+
+    </script>
+  </body>
+</html>
