@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05_String함수.html</title>
+  </head>
+  <body>
+
+    <h3>String Methods</h3>
+
+    <script>
+        //참조 https://www.w3schools.com/js/js_string_methods.asp
+        let str="Gone With The Wind";
+
+        document.write(str.length); //글자 갯수
+        document.write("<hr>");
+        //문자열은 0번부터 카운트 됨.
+        document.write(str.charAt(0));  //"G"문자열이란걸 인식하기!!.0번째 글자
+        document.write("<hr>");
+        document.write(str.charAt(17)); //"d"
+        document.write("<hr>");
+        document.write(str.charAt(str.length-1));   //"d" 마지막글자
+        document.write("<hr>");
+
+        //전부 대문자로 치환
+        document.write(str.toUpperCase());//매개변수없는 함수.()잊지말기
+        document.write("<hr>");
+        document.write(str.toLowerCase()); //전부 소문자로 치환
+        document.write("<hr>");
+        document.write(str.replace("n","N")); //"n" -> "N"으로 치환
+        document.write("<hr>");
+
+        //⭐⭐⭐꼭 알아두기
+        document.write(str.substring(10, 13)); //6번째~(12-1)번째 까지
+        document.write("<hr>");
+
+        //맨 앞글자 자르기
+        document.write(str.substring(0,1));
+        document.write("<hr>");
+
+        //맨 마지막 자르기
+        document.write(str.substring(str.length-1,str.length));
+        document.write("<hr>");
+
+        //문자열 분리하기
+        document.write(str.slice(10, 13));  //"The"
+        document.write("<hr>");
+
+        //문자열 합치기
+        let text1="Hello";
+        let text2="World";
+        let text3=text1.concat(text2);
+        document.write(text3);  //"HelloWorld"
+        document.write("<hr>");
+
+        //문자열의 맨앞, 맨뒤 공백제거하기(문자열의 맨 앞과 맨 뒤의 공백만 제거할 수 있고
+        //문자열 중간 사이사이의 공백은 제거 불가)
+        let text4="    Java  Script     ";
+        document.write("#"+text4.trim()+"#");
+        document.write("<hr>");
+
+        //4칸을 기준으로 빈칸은 0으로 앞에서부터 채우기
+        let text5="9";
+        document.write(text5.padStart(4,0)); //0009
+        document.write("<hr>");
+
+        //4칸을 기준으로 빈칸은 0으로 뒤에서부터 채우기
+        let text6="8";
+        document.write(text6.padEnd(4,0));  //8000
+        document.write("<hr>");
+
+    </script>
+
+  </body>
+</html>
