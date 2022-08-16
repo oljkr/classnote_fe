@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>02_이미지스크롤.html</title>
+    <style>
+        #mydiv{
+            position: relative;
+            left: 100px;
+            top: 10px;
+            /*8)*/
+            --width: 800px;
+            /*9)영역크기 줄이기*/
+            width: 305px;
+            height: 150px;
+            /*10)*/
+            --background-color: rgb(247, 186, 137);
+            background-color: white; /*11)배경색 흰색으로 바꾸기*/
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        //1)스크롤하고자 하는 이미지를 전역변수에 저장
+        let ctnt=[]; //배열선언
+        ctnt[0]="<img src='http://image.kyobobook.co.kr/images/book/large/909/l9791165341909.jpg' width='85'>";
+        ctnt[1]="<img src='http://image.kyobobook.co.kr/images/book/large/379/l9791161571379.jpg' width='85'>";
+        ctnt[2]="<img src='http://image.kyobobook.co.kr/images/book/large/449/l4808937460449.jpg' width='85'>";
+        ctnt[3]="<img src='http://image.kyobobook.co.kr/images/book/large/510/l9791168340510.jpg' width='85'>";
+        ctnt[4]="<img src='http://image.kyobobook.co.kr/images/book/large/754/l9791191043754.jpg' width='85'>";
+        ctnt[5]="<img src='http://image.kyobobook.co.kr/images/book/large/001/l9791191824001.jpg' width='85'>";
+        ctnt[6]="<img src='http://image.kyobobook.co.kr/images/book/large/518/l9791191043518.jpg' width='85'>";
+        ctnt[7]="<img src='http://image.kyobobook.co.kr/images/book/large/564/l9788937437564.jpg' width='85'>";
+
+        //2) 1)에서 준비한 이미지를 id=mydiv에 배치하기
+        function start(){
+            /* 
+                document.write("<div id='area0' style='position:absolute; top:0; left:0;'>") //left영역을 주기 위해 배열요소를 div로 감싸 준다.
+                document.write(ctnt[0]);
+                document.write("</div>");
+
+                document.write("<div id='area1' style='position:absolute; top:0; left:90px;'>") //left영역을 주기 위해 배열요소를 div로 감싸 준다.
+                document.write(ctnt[1]);
+                document.write("</div>");
+            */
+
+            //문) 반복문을 활용해서 이미지 8장 배치하기
+            for(let i=0; i<ctnt.length; i++){
+                //반복문으로 i를 사용하려면 "로 문장 마무리를 해줘서 +로 덧붙여준다.
+            document.write("<div id='area" + i + "' style='position:absolute; top:10px; left: " + ((i*100)+10) + "px;'>") //left영역을 주기 위해 배열요소를 div로 감싸 준다.
+            document.write(ctnt[i]);
+            document.write("</div>");
+            }
+
+            //3) 3초 후에 scroll함수
+            setTimeout(scroll, 1000);
+        }
+
+        //4)이미지 스크롤
+        function scroll(){
+            //alert("scroll함수 호출");
+            //alert(document.getElementById("area0"));            //[object HTMLDivElement]
+            //alert(document.getElementById("area0").style);      //[object CSSStyleDeclaration]
+            //alert(document.getElementById("area0").style.left); //10px
+
+            //5)id=area0의 스타일을 가져와서 왼쪽여백값을 -10px만큼 줄이기
+            // let tmp=document.getElementById("area0").style;
+            // tmp.left = parseInt(tmp.left)-10 + "px";
+            for(let x=0; x<ctnt.length; x++){
+                let tmp=document.getElementById("area"+x).style;
+                tmp.left = parseInt(tmp.left)-10 + "px";
+
+                //7)이미지 순환하기 위해서 이미지를 다시 배치
+                if(parseInt(tmp.left)<=-100){ //id=mydiv영역을 벗어났는지?
+                    //tmp.left=(ctnt.length-1)*100+"px";
+                    tmp.left = 700 + "px";
+                }
+            }
+
+            //6)0.5초 후 scroll함수를 호출
+            timer = setTimeout(scroll, 300);
+            //브라우저를 나가거나 다른 페이지로 이동하거나 할 때 위의 함수를 꼭 죽이고 나가야함!!
+            //<body에 onunload로 killtime()함수를 적용한다.
+        }
+        //13) 6)의 시간을 해제
+        var timer;  //전역변수
+        function killtime(){
+            clearTimeout(timer);
+        }
+    </script>
+  </head>
+  <body onunload="killtime()">  <!-- 14) 현재문서에서 나갔거나 종료했을 때 ㅕ-->
+    <h3>이미지스크롤</h3>
+
+    <input type="button" value="이미지 스크롤 중지" onclick="killtime()">
+
+    <!-- 이미지가 스크롤 되는 위치 -->
+    <div id="mydiv">
+        <script> start(); </script>
+    </div>
+
+  </body>
+</html>
