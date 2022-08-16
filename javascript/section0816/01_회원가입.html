@@ -14,7 +14,7 @@
         JavaScript와 JQuery를 활용하고, 데이터의 유효성을 검증하기 위해서도 사용한다
     -->
     <h3>회원가입</h3>
-    <form name="memfrm" id="memfrm">
+    <form name="memfrm" id="memfrm" action="ok.jsp" onsubmit="return validate()">
         아이디 :
         <input type="text" name="uid" id="uid" class="line">
         <input type="button" value="ID중복확인" onclick="getID()">
@@ -35,7 +35,8 @@
         <input type="checkbox" name="agree" id="agree">
         <hr>
 
-        <input type="submit" value="가입1">
+        <input type="submit" value="가입1"><!--여기 타입이 submit이기 때문에 17번라인에서 onsubmit을 사용할 수 있다.
+        그리고 onsubmit은 return값을 가진다.-->
         <input type="reset" value="취소">
 
 
