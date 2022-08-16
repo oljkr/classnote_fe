@@ -26,9 +26,10 @@
         <hr>
 
         주민번호 :
-        <input type="number" name="jumin1" id="jumin1" size="6" maxlength="6">
+        <!--아래 input type을 "number"로 주면 끝에 maxlength가 적용이 안 되기 때문에 input type을 text로 사용-->
+        <input type="text" name="jumin1" id="jumin1" size="6" maxlength="6">
         -
-        <input type="number" name="jumin2" id="jumin2" size="7" maxlength="7">
+        <input type="text" name="jumin2" id="jumin2" size="7" maxlength="7">
         <hr>
 
         약관동의 :
@@ -38,12 +39,11 @@
         <input type="submit" value="가입1"><!--여기 타입이 submit이기 때문에 17번라인에서 onsubmit을 사용할 수 있다.
         그리고 onsubmit은 return값을 가진다.-->
         <input type="reset" value="취소">
-
-
-        
+        <!-- 아래는 type이 button이라서 submit기능이 없지만 js를 통해서 submit을 할 수있게 할 수 있다.
+        또한 js를 이용해 17번 라인의 action을 분기할 수 있다.-->
+        <input type="button" value="가입2" onclick="validate2()">        
     </form>
     <script>
-
 
     </script>
 
