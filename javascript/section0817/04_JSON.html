@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>04_JSON.html</title>
+  </head>
+  <body>
+    <h3> JSON 함수</h3>
+
+    <script>
+        //배열형태대로 자료를 모을 때 JSON으로도 모을 수 있다.
+        let persons = [
+             {firstName:"Steve", lastName:"Jobs", age:56}
+            ,{firstName:"Lisa", lastName:"Su", age:52}
+            ,{firstName:"Bill", lastName:"Gates", age:66}
+            ,{firstName:"Mark", lastName:"Zuckerberg", age:38}
+            ,{firstName:"Linus", lastName:"Torvalds", age:52}
+        ];
+
+        document.write(persons.length); //5
+        document.write(persons[0]);     //[object Object]
+        document.write(persons[1]);
+        document.write(persons[2]);
+        document.write("<hr>");
+
+        for(let i=0; i<persons.length; i++){
+            document.write(persons[i].firstName+" ");
+            document.write(persons[i].lastName+" ");
+            document.write(persons[i].age);
+            document.write("<br>");
+        }
+        document.write("<hr>");
+        ///////////////////////////////////////////////
+
+        //배열 안에 JSON이 올 수 있고 JSON안에도 배열이 올 수 있다.
+        //JSON Array
+        let myObj={
+            name:"John"
+            ,age:30
+            ,cars:["Ford","BMW","Fiat"]
+        }
+
+        document.write(myObj.cars[0]); //Ford
+        document.write("<hr>");
+        ///////////////////////////////////////////////
+
+        //for ~ in 반복문
+        //형식) for( key in object ) {  }
+        const numbers=[45, 4, 9, 16, 25];
+        for(let i = 0; i<numbers.length; i++){
+            document.write(numbers[i]);
+            document.write("<br>");
+        }
+        document.write("<hr>");
+        for(let i in numbers){
+            document.write(numbers[i]);
+            document.write("<br>");
+        }
+        document.write("<hr>");
+
+        /*
+        const person={firstName:"Lisa", lastName:"Su", age:52};
+        for(let i in person){
+            document.write(person[i]);
+            document.write("<br>");
+        }
+        document.write("<hr>");
+        */
+        ///////////////////////////////////////////////
+
+        //JSON 관련 함수
+        //1) JSON.parse()
+        // ->String 형태의 JSON문법을 분리할 때
+        let person='{"firstName":"Lisa", "lastName":"Su", "age":52}'; //서버에서 문자열 data로 날려줬을 때
+        document.write(person.length);
+        document.write(person); //그냥 문자열
+        document.write("<hr>");
+
+        let obj=JSON.parse(person); //JSON형식으로 형변환. 이 함수를 쓸 때는 JSON의 name을 ""로 감싸야 한다.
+        document.write(obj.firstName);
+        document.write(obj.lastName);
+        document.write(obj.age);
+        document.write("<hr>");
+
+        //2) JSON.stringify()
+        //-> JSON값을 일반 문자열로 변환
+        let txt={"firstName":"Lisa", "lastName":"Su", "age":52};
+        let str=JSON.stringify(txt);
+        document.write(str.length);
+        document.write(str);
+        
+
+    </script>
+  </body>
+</html>
