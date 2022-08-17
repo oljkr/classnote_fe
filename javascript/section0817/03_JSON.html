@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>03_JSON.html</title>
+  </head>
+  <body>
+    <h3>JSON</h3>
+
+    <script>
+        //참조 https://www.w3schools.com/js/js_json_intro.asp
+        /*
+            🍰 JSON (JavaScript Object Notation)
+              - 문자단위 통신(비동기식 방식)에서 XML를 대체하는 포맷이다
+              - AJAX, NoSQL DB등에서 주로 사용하는 포맷(표기법)
+              - 배열을 객체화
+
+            🍰 XML문법
+              - 여는태그와 닫는태그로 구성 <>
+              - custom tag(사용자 정의 태그) 기반
+              - 환경설정 파일 작성, 안드로이드 기반 앱 개발시 View단 구성
+              예) <database>
+                    <driver>OracleDriver</driver>
+                    <username>system</username>
+                    <password>1234</password>
+                  </database>
+
+            🍰 JSON 기본 구조 (배열 비슷...)
+              - 속성:값 쌍으로 데이터가 구성되어 있다
+              - 속성(name, key, property), 값(value, data)
+              - name구성시 "" 기호는 생략가능하다(""도 ''도 가능.name은 한글 안 됨. 변수처럼 생각하기)
+              - value 안에 문자열(string)이면 ""를 생략하면 안 됨. 숫자열은 생략 가능.
+              - {}안에 데이터를 저장한다
+              - 형식) {name:value, "name":value, 'name':value, ~~~}
+              - 예) {driver:"OracleDriver", "username":"system", password:'1234', ~~}
+        */
+        ////////////////////////////////////////////////////////////////////////
+
+        //1. Array 순수 배열
+        /*
+        let person=["John", "Doe", 46];
+        document.write(person.length); //3
+        document.write("<hr>");
+        document.write(person[0]);
+        document.write("<hr>");
+        document.write(person[1]);
+        document.write("<hr>");
+        document.write(person[2]);
+        */
+       
+        //아래와 같은 배열에서 JSON이 나옴
+        /*
+        let person=[];
+        person["firstName"]="John";
+        person["lastName"]="Doe";
+        person["age"]=46;
+
+        document.write(person["firstName"]);  //John
+        document.write("<hr>");
+        document.write(person["lastName"]); //Doe
+        document.write("<hr>");
+        document.write(person["age"]);  //46
+        document.write("<hr>");
+        //이처럼 index를 문자열로 지정한 것은 숫자에 따른 순서로 사용할 수 없다.
+        document.write(person[0]); //undefined
+        document.write(person[1]); //undefined
+        document.write(person[2]); //undefined
+        */
+        ////////////////////////////////////////////////////////////////
+
+        //2. JSON 변수 선언
+        let person={"firstName":"John", "lastName":"Doe", "age":46};
+        //name에 ""는 생략가능
+        //let person={firstName:"John", lastName:"Doe", age:46};
+
+        //JavaScript 접근
+        document.write(person["firstName"]);  //John
+        document.write("<hr>");
+        document.write(person["lastName"]); //Doe
+        document.write("<hr>");
+        document.write(person["age"]);  //46
+        document.write("<hr>");
+
+        //JSON접근
+        document.write(person.firstName);  //John
+        document.write("<hr>");
+        document.write(person.lastName); //Doe
+        document.write("<hr>");
+        document.write(person.age);  //46
+        document.write("<hr>");
+
+    </script>
+  </body>
+</html>
