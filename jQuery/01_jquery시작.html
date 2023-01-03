@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>01_jquery시작.html</title>
+  </head>
+  <body>
+    <!-- jQuery import -->
+    <script src="jquery-3.6.1.min.js"></script>
+    <!-- * -->
+    <script>
+      //jQuery 시작
+      //1,2,3 함수 모두 페이지가 열리자마자 실행된다.
+
+      //1) jQuery() 축약형 -> $
+      //근데 제이쿼리 오픈소스 코드가 있으면(주석 * 라인 내용) 이렇게 써도 된다.
+      alert($);
+
+      //2)
+      $(document).ready(function () {
+        // jQuery methods go here...
+        alert("jQuery시작");
+        alert($);
+        alert("Helloworld");
+      });
+
+      //3)
+      $(function () {
+        // jQuery methods go here...
+        alert("jQuery시작");
+        alert($);
+        alert("HelloJava");
+      });
+
+    </script>
+  </body>
+</html>

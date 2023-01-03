@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>12_날짜자동생성.html</title>
+    <!-- jQuery import -->
+    <script src="jquery-3.6.1.min.js"></script>
+    <!-- moment 오픈소스 import -->
+    <script src="moment-with-locales.js"></script>
+  </head>
+  <body>
+    <h3>날짜 데이터 자동 생성</h3>
+
+    생년월일 :
+    <select id="myYear"></select
+    >년
+    <select id="myMonth"></select
+    >월
+    <select id="myDate"></select
+    >일
+
+    <script>
+      createYearMonth(); //최초로 함수 한번만 호출
+      //년, 월 생성하기
+      function createYearMonth() {
+        //alert();
+
+        //1) 1월~12월 생성후 추가
+        for (m = 1; m <= 12; m++) {
+          //부모.append(자식)
+          $("#myMonth").append($("<option>").text(m).val(m));
+          //자식.appendTo(부모)
+          //$("<option>").text(m).val(m).appendTo($("#myMonth"));
+        } //for end
+
+        //2)현재년도 -5년 ~ 현재년도 +5년까지 출력
+        //내가 짠 코드
+        /*
+            for(y=-5; y<=5;y++){
+                let yrr=parseInt(moment().format('YYYY'))+y;
+                if(yrr==2022){
+                $("#myYear").append($("<option selected>").text(yrr).val(yrr));
+                continue;
+              }
+                $("#myYear").append($("<option>").text(yrr).val(yrr));
+            }*/
+
+        //선생님 코드
+        let cYear = moment().year(); //현재년도 2022
+        for (y = cYear - 5; y <= cYear + 5; y++) {
+          //3) 현재년도를 미리 selected
+          if (y == cYear) {
+            //$("#myYear").append($("<option>").text(y).val(y).attr("selected","selected"));
+            //이건 코드에 selected라는 말은 안 붙음
+            $("#myYear").append(
+              $("<option>").text(y).val(y).prop("selected", true)
+            );
+          } else {
+            $("#myYear").append($("<option>").text(y).val(y));
+          } //if end
+        } //for end
+
+        //4) '일' 생성하는 함수 호출
+        createDate();
+      } //createYearMonth() end
+
+      function createDate() {
+        //일 생성하기
+
+        //10)기존의 '일' 출력된 값을 지우기
+        $("#myDate").empty();
+
+        //text() : 일반적인 요소의 문자열값을 얻어올 때
+        //val() : <input>, <select>, <textarea>등 폼과 관련된 값(컨트롤 요소)을 얻어올 때
+
+        //5) id=myYear에서 사용자가 선택한 년 가져오기
+        let year = $("#myYear").val();
+        //alert(year);
+
+        //6) id=myMonth에서 사용자가 선택한 월 가져오기
+        let month = $("#myMonth").val();
+        //alert(month);
+
+        //7)endOf() : 해당년도와 해당월의 마지막 일을 얻어옴
+        let endDay = moment(year + "-" + month)
+          .endOf("month")
+          .date();
+        //alert(endDay);
+
+        //8) '일' 추가
+        for (d = 1; d <= endDay; d++) {
+          $("#myDate").append($("<option>").text(d).val(d));
+        } //for end
+
+        //9)사용자가 년, 월을 변경했을 때(change이벤트 발생)
+        $("#myYear, #myMonth").change(createDate);
+        //old version 옛날엔 아래처럼 문자열 안에 함수가 들어가고 함수에 ()를 추가해서 사용했다.
+        //$("#myYear, #myMonth").change("createDate()");
+
+        //과제) 연도의 첫번째 요소를 선택하면 추가로 앞의 10개년도를 더 보여주기
+        if (year == $("#myYear option:first").val()) {
+          addMinusYear();
+        }
+        else if (year == $("#myYear option:last").val()){
+          addPlusYear();
+        }
+      } //createDate() end
+
+      function addMinusYear() {
+        let sYear = $("#myYear option:first").val() //첫번째 연도를 선택
+        for (y=0;y>=-10;y--) {
+          //3) 현재년도를 미리 selected
+          let yy=parseInt(sYear)+y;
+          $("#myYear").prepend($("<option>").text(yy).val(yy));
+        } //for end
+      }
+
+      function addPlusYear(){
+        let sYear = $("#myYear option:last").val() //첫번째 연도를 선택
+        for (y=0;y<=10;y++) {
+          //3) 현재년도를 미리 selected
+          let yy=parseInt(sYear)+y;
+          $("#myYear").append($("<option>").text(yy).val(yy));
+        } //for end
+      }
+    </script>
+  </body>
+</html>

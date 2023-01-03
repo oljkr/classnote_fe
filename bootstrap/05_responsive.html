@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>blank.html</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .b {border: solid 1px black;}
+    </style>
+  </head>
+  <body>
+    <!--
+        ● responsive util 
+		  visible-mode mode일때 보이기
+		  hidden-mode  mode일때 숨기기
+		  offset       빈여백으로 남김 ex.offset-sm-4
+    -->
+
+    <div class="container-fluid">
+        visible-mode : md모드일 때 🌼 보이기
+        <div class="row">
+            <div class="col-md-3 b">🌻md-3</div>
+            <div class="col-md-6 b visible-md">🌼md-6</div>
+            <div class="col-md-3 b">🌷md-3</div>
+        </div>
+    </div>
+    <br>
+
+    <div class="container-fluid">
+        hidden-mode : md모드일 때 숨기기
+        <div class="row hidden-md">
+            <div class="col-md-3 b">🌻md-3</div>
+            <div class="col-md-6 b visible-md">🌼md-6</div>
+            <div class="col-md-3 b">🌷md-3</div>
+        </div>
+    </div>
+    <br>
+
+    <div class="container-fluid">
+        offset : 빈여백으로 남김
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 b">🌻md-4 offset-md-4</div>
+            <div class="col-md-4 b">🌼md-4</div>
+        </div>
+    </div>
+    <br>
+
+    <div class="container-fluid">
+        row안에 row가능
+        <div class="row">
+            <div class="col-md-3 b">outer md-3</div>
+            <div class="col-md-6 b">outer md-6</div>
+                <div class="row">
+                    <!-- 아래 3개의 합이 6이 아니라 12인 것에 주의!! -->
+                    <div class="col-md-4 b">inner md-4</div>
+                    <div class="col-md-4 b">inner md-4</div>
+                    <div class="col-md-4 b">inner md-4</div>
+                </div>
+            <div class="col-md-3 b">outer md-3</div>
+        </div>
+    </div>
+    
+  </body>
+</html>

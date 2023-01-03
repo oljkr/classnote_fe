@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>02_jquery이벤트.html</title>
+    <!-- jQuery import -->
+    <script src="jquery-3.6.1.min.js"></script>
+  </head>
+  <body>
+    <h3>jQuery 이벤트</h3>
+    <form id="memfrm" name="memfrm" action="ok.jsp">
+      <!--참고로 아래 라인의 type을 지정하지 않으면 기본이 text임-->
+      아이디 : <input type="text" id="uid" name="uid" value="ITWILL" />
+      <hr />
+      <!-- <button>요소는 기본속성이 type=submit 동일하다-->
+
+      <button id="btn_idcheck">ID중복확인</button>
+      <button id="btn_join">회원가입</button>
+      <button id="btn_reset">다시쓰기</button>
+    </form>
+
+    <script>
+      //<input type="text" id="uid" name="uid" value="ITWILL" />
+      //1)JavaScript 접근
+      // alert(document.getElementById("uid").value);
+
+      //2)jQuery 접근
+      //-> 기본문법 : $(선택자).action()
+      //alert($("#uid").val());
+      /////////////////////////////////////////////////////////////////
+
+      //참조 https://www.w3schools.com/jquery/jquery_events.asp
+      /**
+       * 🍟jQuery 이벤트와 함수
+       * -$("선택자").click(function 함수명(){}) //여기서 함수명을 지운다
+       * -$("선택자").click(function(){}) //이렇게 사용한다. 익명함수 이런 느낌...
+       * -$("선택자").on(click, function(){}) //이렇게도 사용 가능
+       *
+       * 🍟id="btn_idcheck"에 클릭이벤트와 함수 연결하기
+       * -$("#btn_idcheck").click(function(){})
+       * -$("#btn_idcheck").on(click, function(){})
+       */
+
+      $("#btn_idcheck").click(function () {
+        //id=btn_idcheck 클릭했을 때 팝업창 띄우기
+        window.open("blank.html", "popwin", "width=350,height=300");
+      }); //click end
+
+      $("#btn_join").click(function () {
+        let uid = $("#uid").val();
+        uid = uid.trim();
+        if (!(uid.length >= 8 && uid.length <= 12)) {
+          alert("아이디 8~12글자 이내 입력해주세요~");
+          $("#uid").focus();
+          return false; //<button>요소의 기본속성이 submit이므로
+          //return false를 주면 서버로 전송되지 않음
+        } //if end
+        let icy = $("#memfrm").submit(); //<form id=memfrm></form>를 서버로 전송
+      }); //click end
+
+      $("#btn_reset").click(function () {
+        $("#memfrm").reset(); //<form id=memfrm></form>를 원래대로
+      }); //click end
+      
+    </script>
+  </body>
+</html>
